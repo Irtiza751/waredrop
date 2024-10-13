@@ -1,0 +1,30 @@
+{
+  "tasks": {
+    "build": {
+      "dependsOn": ["^build"],
+      "outputs": ["dist/**", ".next/**"]
+    },
+    "lint": {
+      "outputs": []
+    },
+    "dev": {
+      "cache": false,
+      "dependsOn": ["^build"]
+    },
+    "storybook": {
+      "cache": false
+    },
+    "build:storybook": {
+      "outputs": ["storybook-static/**"]
+    },
+    "build:ui": {
+      "cache": false
+    },
+    "test": {
+      "cache": false
+    },
+    "clean": {
+      "outputs": []
+    }
+  }
+}
