@@ -1,4 +1,6 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import logo from "@/assets/images/logo.png";
 
 export default function Home() {
   return (
@@ -9,6 +11,9 @@ export default function Home() {
       <Button variant="outline">Outlined</Button>
       <Button variant="ghost">Ghost</Button>
       <Button variant="link">Link</Button>
+      <div className="my-2">
+        <Image src={logo} alt="Waredrop" priority width={170} />
+      </div>
     </div>
   );
 }
