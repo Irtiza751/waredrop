@@ -41,6 +41,9 @@ importers:
       '@radix-ui/react-tabs':
         specifier: ^1.1.1
         version: 1.1.1(@types/react-dom@18.3.0)(@types/react@18.3.5)(react-dom@18.3.1)(react@18.3.1)
+      '@waredrop/ui':
+        specifier: '*'
+        version: link:../../packages/ui
       class-variance-authority:
         specifier: ^0.7.0
         version: 0.7.0
@@ -137,6 +140,9 @@ importers:
 
   packages/ui:
     dependencies:
+      '@radix-ui/react-slot':
+        specifier: ^1.1.0
+        version: 1.1.0(@types/react@18.3.5)(react@18.3.1)
       react:
         specifier: ^18
         version: 18.3.1
@@ -153,6 +159,15 @@ importers:
       '@types/react-dom':
         specifier: ^18
         version: 18.3.0
+      '@waredrop/eslint-config':
+        specifier: '*'
+        version: link:../eslint-config
+      '@waredrop/tailwind-config':
+        specifier: '*'
+        version: link:../tailwind-config
+      '@waredrop/ts-config':
+        specifier: '*'
+        version: link:../ts-config
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.41)

@@ -4,12 +4,19 @@
   "description": "Waredrop ui libraray",
   "main": "index.js",
   "private": false,
+  "sideEffects": [
+    "**/*.css"
+  ],
+  "files": [
+    "dist"
+  ],
   "exports": {
-    ".": "./src/index.tsx"
+    ".": "./src/index.tsx",
+    "./index.css": "./src/index.css"
   },
   "scripts": {
-    "dev": "tailwindcss -i ./src/styles.css -o ./dist/index.css --watch",
-    "build": "tailwindcss -i ./src/styles.css -o dist/index.css"
+    "dev": "tailwindcss -i ./src/index.css -o ./dist/index.css --watch",
+    "build": "tailwindcss -i ./src/index.css -o dist/index.css"
   },
   "keywords": [],
   "author": "Muhammad Irtiza",
@@ -19,6 +26,9 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@waredrop/eslint-config": "*",
+    "@waredrop/tailwind-config": "*",
+    "@waredrop/ts-config": "*",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
@@ -30,6 +40,7 @@
     "typescript": "^5"
   },
   "dependencies": {
+    "@radix-ui/react-slot": "^1.1.0",
     "react": "^18"
   }
 }
