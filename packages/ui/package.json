@@ -12,7 +12,7 @@
   ],
   "exports": {
     ".": "./src/index.tsx",
-    "./index.css": "./src/index.css"
+    "./index.css": "./dist/index.css"
   },
   "scripts": {
     "dev": "tailwindcss -i ./src/index.css -o ./dist/index.css --watch",

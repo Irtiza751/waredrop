@@ -1,15 +1,15 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
+import { Button } from "@waredrop/ui";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Separator } from "@radix-ui/react-separator";
+} from "@waredrop/ui";
+import { Input } from "@waredrop/ui";
+import { Separator } from "@waredrop/ui";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import { z } from "zod";
@@ -22,7 +22,7 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
+} from "@waredrop/ui";
 
 const signinSchema = z.object({
   email: z.string().email(),
