@@ -1,15 +1,16 @@
 {
-  "name": "eslint-config",
+  "name": "@waredrop/eslint-config",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "private": true,
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
+  "files": [
+    "library.js",
+    "next.js",
+    "react-internal.js"
+  ],
   "author": "Muhammad Irtiza",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@typescript-eslint/eslint-plugin": "^8.10.0",
     "@typescript-eslint/parser": "^8.10.0",

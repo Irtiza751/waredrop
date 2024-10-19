@@ -1,0 +1,13 @@
+{
+  "name": "@waredrop/tailwind-config",
+  "version": "1.0.0",
+  "description": "",
+  "main": "tailwind.config.ts",
+  "scripts": {},
+  "keywords": [],
+  "author": "Muhammad Irtiza",
+  "license": "MIT",
+  "dependencies": {
+    "tailwindcss": "^3.3.5"
+  }
+}
