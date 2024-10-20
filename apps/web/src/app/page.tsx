@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
+import { Button } from "@waredrop/ui";
 
 export default function Home() {
   return (

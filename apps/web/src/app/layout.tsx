@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter as Font } from "next/font/google";
+// styles
 import "./globals.css";
+import "@waredrop/ui/index.css";
 
 const font = Font({ subsets: ["latin"] });
 
