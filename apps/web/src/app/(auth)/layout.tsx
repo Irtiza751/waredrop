@@ -15,7 +15,9 @@ export default function AuthLayout({
           <Link href="/">
             <Image src={logo} alt="Waredrop" priority width={170} />
           </Link>
-          <Button variant="secondary">Sign up</Button>
+          <Button asChild variant="secondary">
+            <Link href="/sign-up">Sign up</Link>
+          </Button>
         </nav>
       </header>
       <div className="container grid place-items-center min-h-[calc(100vh-60px)]">

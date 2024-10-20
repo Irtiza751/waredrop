@@ -1,15 +1,5 @@
 "use client";
 
-import { Button, CardDescription } from "@waredrop/ui";
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@waredrop/ui";
-import { Input } from "@waredrop/ui";
-import { Separator } from "@waredrop/ui";
 import { FcGoogle } from "react-icons/fc";
 import Link from "next/link";
 import { z } from "zod";
@@ -22,39 +12,63 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  Button,
+  CardDescription,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+  Input,
+  Separator,
 } from "@waredrop/ui";
 
-const signinSchema = z.object({
+const signupSchema = z.object({
+  username: z.string().min(5).max(150),
   email: z.string().email(),
   password: z.string().min(6).max(150),
 });
 
-type Signin = z.infer<typeof signinSchema>;
+type Signup = z.infer<typeof signupSchema>;
 
-export default function SigninPage() {
-  const form = useForm<Signin>({
-    resolver: zodResolver(signinSchema),
+export default function SignupPage() {
+  const form = useForm<Signup>({
+    resolver: zodResolver(signupSchema),
     defaultValues: {
+      username: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = (data: Signin) => {
+  const onSubmit = (data: Signup) => {
     console.log(data);
   };
 
   return (
     <Card className="max-w-lg w-full mx-auto">
       <CardHeader>
-        <CardTitle className="text-3xl">Welcome back!</CardTitle>
+        <CardTitle className="text-3xl">Create an account</CardTitle>
         <CardDescription>
-          Please enter your credentials & start building your Waredrop
+          Create your account & Step into style with Waredrop.
         </CardDescription>
       </CardHeader>
       <CardContent>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+            <FormField
+              control={form.control}
+              name="username"
+              render={({ field }) => (
+                <FormItem className="space-y-2">
+                  <FormLabel className="text-black">Enter username</FormLabel>
+                  <FormControl>
+                    <Input {...field} placeholder="John doe" type="text" />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
             <FormField
               control={form.control}
               name="email"
@@ -102,9 +116,9 @@ export default function SigninPage() {
           Continue with Google
         </Button>
         <p>
-          Don&apos;t have an account?{" "}
-          <Link className="text-primary hover:underline" href="/sign-up">
-            Sign up
+          Already have an account{" "}
+          <Link className="text-primary hover:underline" href="/sign-in">
+            Sign in
           </Link>
         </p>
       </CardFooter>
