@@ -12,7 +12,7 @@ WORKDIR /app
 # Install turbo cli & pnpm globally
 RUN npm install -g turbo pnpm
 COPY . .
-RUN turbo prune api --docker
+RUN turbo prune backend --docker
 
 # Add lockfile and package.json's of isolated subworkspace
 FROM base AS installer
@@ -22,7 +22,7 @@ WORKDIR /app
 
 # First install dependencies (as they change less often)
 COPY --from=builder /app/out/json/ .
-RUN pnpm install
+RUN pnpm install --frozen-lockfile
 
 # Build the project and its dependencies
 COPY --from=builder /app/out/full/ .
@@ -34,7 +34,7 @@ COPY --from=builder /app/out/full/ .
 # ARG TURBO_TOKEN
 # ENV TURBO_TOKEN=$TURBO_TOKEN
 
-RUN pnpm turbo build --filter=api...
+RUN pnpm turbo build --filter=backend...
 
 FROM base AS runner
 WORKDIR /app
@@ -45,4 +45,4 @@ RUN adduser --system --uid 1001 nestjs
 USER nestjs
 COPY --from=installer /app .
 
-CMD node apps/api/dist/main.js
+CMD node apps/backend/dist/main.js

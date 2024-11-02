@@ -4,6 +4,10 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**", ".next/**"]
     },
+    "prune": {
+      "dependsOn": ["build"],
+      "outputs": ["**/package.json", "**/node_modules"]
+    },
     "lint": {
       "outputs": []
     },
