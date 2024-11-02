@@ -1,0 +1,54 @@
+FROM node:19-alpine AS base
+
+# Install required dependencies
+RUN apk update && apk add --no-cache libc6-compat
+
+# Set working directory and correct permissions
+WORKDIR /app
+RUN mkdir -p /app && chown -R node:node /app
+
+# Switch to root for global npm installs, then back to node user
+USER root
+RUN npm install -g turbo pnpm --unsafe-perm
+USER node
+
+# ----------------- Builder Stage -----------------
+FROM base AS builder
+COPY . .
+RUN turbo prune backend --docker
+
+# ----------------- Installer Stage -----------------
+FROM base AS installer
+WORKDIR /app
+RUN chown -R node:node /app
+
+# Ensure pnpm is installed and available to the node user
+USER root
+RUN npm install -g turbo pnpm --unsafe-perm
+USER node
+
+# Install dependencies
+COPY --from=builder /app/out/json/ .
+RUN pnpm install --frozen-lockfile
+
+# Copy the remaining application code
+COPY --from=builder /app/out/full/ .
+
+# ----------------- Runner Stage -----------------
+FROM base AS runner
+WORKDIR /app
+RUN chown -R node:node /app
+
+# Install pnpm again in runner stage for safety
+USER root
+RUN npm install -g pnpm --unsafe-perm
+USER node
+
+# Copy files from installer stage
+COPY --from=installer /app .
+
+# Verify pnpm installation
+RUN pnpm -v
+
+# Run the backend in development mode
+CMD ["pnpm", "turbo", "dev", "--filter=backend"]
