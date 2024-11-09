@@ -1,6 +1,21 @@
 version: "3"
 
 services:
+  db:
+    container_name: waredrop_db
+    image: postgres:15-alpine
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres_password
+      POSTGRES_DB: waredrop_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - waredrop_network
+    ports:
+      - "5433:5432"
+
   backend:
     container_name: backend
     build:
@@ -8,14 +23,16 @@ services:
       dockerfile: ./apps/backend/Dockerfile.dev
     restart: always
     volumes:
-      - /apps/node_modules
+      - /app/node_modules
       - ./apps/backend/:/app
     environment:
       - HOST=0.0.0.0
+      - DATABASE_URL=postgresql://postgres:postgres_password@db:5432/waredrop_db
     ports:
       - 4000:4000
     networks:
-      - app_network
+      - waredrop_network
+
   web:
     depends_on:
       - backend
@@ -25,17 +42,21 @@ services:
       dockerfile: ./apps/web/Dockerfile.dev
     restart: always
     volumes:
-      - /apps/node_modules
+      - /app/node_modules
       - ./apps/web/:/app
     environment:
       - HOST=0.0.0.0
     ports:
       - 3000:3000
     networks:
-      - app_network
+      - waredrop_network
 
 # Define a network, which allows containers to communicate
 # with each other, by using their container name as a hostname
 networks:
-  app_network:
+  waredrop_network:
     external: true
+
+# Define volumes to persist data
+volumes:
+  postgres_data:
