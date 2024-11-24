@@ -1,32 +1,28 @@
 import Image from "next/image";
-import heroImage from "@/assets/images/hero.jpg";
-import { Button } from "@waredrop/ui";
-import { getSeason } from "@waredrop/utils";
+// import heroImage from "@/assets/images/hero.jpg";
+import banner from "@/assets/images/banner.jpg";
+// import { Button } from "@waredrop/ui";
+// import { getSeason } from "@waredrop/utils";
 
 export default function Home() {
   return (
     <div>
       {/* hero section */}
-      <section className="relative grid grid-cols-2 h-svh">
-        <div className="self-center text-center text-blue-900">
-          <h3 className="text-4xl font-semibold">Sale up to 50% off!</h3>
-          <h2 className="text-6xl font-bold mb-4">
-            {getSeason(new Date().getMonth())} Sale Collections
+      <section className="h-96 relative">
+        <Image
+          alt="Hero Image"
+          src={banner}
+          layout="fill"
+          objectFit="cover"
+          className="absolute inset-0"
+        />
+        <span className="absolute inset-0 bg-slate-950/25" />
+        <div className="container relative text-white h-full flex items-end pb-10">
+          <h2 className="text-5xl max-w-3xl">
+            Seamless shopping for stylish looks that don&apos;t break the bank.
           </h2>
-          <Button size="lg">Shop Now</Button>
-        </div>
-        <div className="relative">
-          <Image
-            alt="Hero Image"
-            src={heroImage}
-            layout="fill"
-            objectFit="cover"
-            className="absolute inset-0"
-          />
         </div>
       </section>
-      {/* quote section */}
-      <section></section>
     </div>
   );
 }

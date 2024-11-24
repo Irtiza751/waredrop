@@ -2,6 +2,8 @@ import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 import { Button } from "@waredrop/ui";
 import Link from "next/link";
+import { FiShoppingBag, FiSearch } from "react-icons/fi";
+import { getSeason } from "@waredrop/utils";
 
 const routes = [
   {
@@ -29,13 +31,15 @@ export default function HomeLayout({
 }>) {
   return (
     <>
+      <div className="bg-blue-700 py-1">
+        <p className="text-center text-white uppercase">
+          Get up to 50% of on our {getSeason(new Date().getMonth())} collection
+          Sale
+        </p>
+      </div>
       <header className="bg-white">
         <nav className="container py-4 flex items-center">
-          <div className="">
-            <Image src={logo} alt="Waredrop" priority width={170} />
-          </div>
-
-          <ul className="flex-1 flex gap-10 justify-center">
+          <ul className="flex-1 flex gap-10">
             {routes.map((route, i) => {
               return (
                 <li key={i}>
@@ -45,11 +49,18 @@ export default function HomeLayout({
             })}
           </ul>
 
-          <div className="space-x-2">
-            <Button asChild variant="secondary">
-              <Link href="/sign-up">Sign Up</Link>
+          <div className="flex-1 flex justify-center">
+            <Image src={logo} alt="Waredrop" priority width={170} />
+          </div>
+
+          <div className="flex-1 space-x-2 flex items-center justify-end">
+            <Button size="icon" variant="link">
+              <FiSearch size={20} />
             </Button>
-            <Button asChild>
+            <Button size="icon" variant="link">
+              <FiShoppingBag size={20} />
+            </Button>
+            <Button asChild variant="link">
               <Link href="/sign-in">Sign In</Link>
             </Button>
           </div>
