@@ -1,0 +1,3 @@
+{
+  "extends": "@waredrop/ts-config/react-library.json"
+}
