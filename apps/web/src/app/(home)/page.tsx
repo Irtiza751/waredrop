@@ -1,8 +1,6 @@
 import Image from "next/image";
-// import heroImage from "@/assets/images/hero.jpg";
 import banner from "@/assets/images/banner.jpg";
-// import { Button } from "@waredrop/ui";
-// import { getSeason } from "@waredrop/utils";
+import hoodie from "@/assets/images/pord-img.png";
 
 export default function Home() {
   return (
@@ -18,9 +16,40 @@ export default function Home() {
         />
         <span className="absolute inset-0 bg-slate-950/25" />
         <div className="container relative text-white h-full flex items-end pb-10">
-          <h2 className="text-5xl max-w-3xl">
+          <h2 className="text-5xl max-w-4xl">
             Seamless shopping for stylish looks that don&apos;t break the bank.
           </h2>
+        </div>
+      </section>
+
+      <section>
+        <div className="container">
+          <h3 className="text-center text-4xl mb-5 mt-16 max-w-lg mx-auto">
+            Fresh arrivals and new selections
+          </h3>
+        </div>
+
+        <div className="grid grid-cols-5 gap-4 container mb-5">
+          <figure>
+            <Image alt="Hoodie" src={hoodie} className="bg-slate-100" />
+            <figcaption>Fall gray hoodie</figcaption>
+          </figure>
+          <figure>
+            <Image alt="Hoodie" src={hoodie} className="bg-slate-100" />
+            <figcaption>Fall gray hoodie</figcaption>
+          </figure>
+          <figure>
+            <Image alt="Hoodie" src={hoodie} className="bg-slate-100" />
+            <figcaption>Fall gray hoodie</figcaption>
+          </figure>
+          <figure>
+            <Image alt="Hoodie" src={hoodie} className="bg-slate-100" />
+            <figcaption>Fall gray hoodie</figcaption>
+          </figure>
+          <figure>
+            <Image alt="Hoodie" src={hoodie} className="bg-slate-100" />
+            <figcaption>Fall gray hoodie</figcaption>
+          </figure>
         </div>
       </section>
     </div>
