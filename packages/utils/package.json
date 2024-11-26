@@ -1,0 +1,31 @@
+{
+  "name": "@waredrop/utils",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "module": "./dist/index.mjs",
+  "private": false,
+  "files": [
+    "dist/**"
+  ],
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "dev": "tsup src/index.ts --format cjs,esm --dts --watch",
+    "clean": "rm -rf ./dist"
+  },
+  "keywords": [],
+  "author": "Muhammad Irtiza",
+  "license": "ISC",
+  "devDependencies": {
+    "@waredrop/ts-config": "*",
+    "@swc/core": "^1.6.13",
+    "@swc/helpers": "^0.5.12",
+    "@types/node": "^20.14.10",
+    "tsup": "^8.1.1",
+    "typescript": "^5.5.4"
+  }
+}
