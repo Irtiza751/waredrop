@@ -29,7 +29,7 @@ export default function Home() {
           </h3>
         </div>
 
-        <div className="grid grid-cols-5 gap-4 container mb-5">
+        <div className="grid grid-cols-4 gap-4 container mb-5">
           <figure>
             <Image alt="Hoodie" src={hoodie} className="bg-slate-100" />
             <figcaption>Fall gray hoodie</figcaption>
