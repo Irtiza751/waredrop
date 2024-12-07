@@ -7,7 +7,7 @@ import hoodie from "@/assets/images/pord-img.png";
 export default function Product() {
   return (
     <figure className="group bg-stone-100 px-4 pb-4 pt-2.5 rounded-lg space-y-2 relative">
-      <h6 className="absolute bg-white px-2 text-center space-x-2 text-lg right-4 top-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-500">
+      <h6 className="absolute bg-white px-2 text-center space-x-1 text-lg right-4 top-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-500">
         {/* discount price */}
         <span className="">$200</span>
         {/* original price */}

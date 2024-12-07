@@ -1,4 +1,5 @@
 import Product from "@/components/product";
+import { Button } from "@waredrop/ui";
 
 export default function Home() {
   return (
@@ -24,6 +25,9 @@ export default function Home() {
           <Product />
           <Product />
           <Product />
+        </div>
+        <div className="flex justify-center">
+          <Button size="lg">Browse All collections</Button>
         </div>
       </section>
     </div>
