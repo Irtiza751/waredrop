@@ -1,16 +1,12 @@
-import Image from "next/image";
-import Link from "next/link";
-import { Button } from "@waredrop/ui";
-
-import hoodie from "@/assets/images/pord-img.png";
+import Product from "@/components/product";
 
 export default function Home() {
   return (
     <div>
       {/* hero section */}
-      <section className="h-96 container bg-gradient-to-r from-blue-800 to-cyan-500 rounded-xl mt-5">
-        <div className="relative text-white h-full flex items-center justify-center pb-10">
-          <h2 className="text-5xl max-w-4xl font-semibold text-center text-blue-100 leading-normal">
+      <section className="h-96 container bg-stone-100 rounded-lg mt-5">
+        <div className="relative h-full flex items-center justify-center pb-10">
+          <h2 className="text-5xl max-w-4xl font-semibold text-center leading-normal text-black">
             Seamless shopping for stylish looks that don&apos;t break the bank.
           </h2>
         </div>
@@ -24,18 +20,10 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-4 gap-4 container mb-5">
-          <figure className="bg-slate-100 p-4 rounded-lg outline outline-1 outline-slate-200 space-y-2">
-            <Link href="/">
-              <Image
-                alt="Hoodie"
-                src={hoodie}
-                className="aspect-square object-cover"
-              />
-            </Link>
-            <figcaption>
-              <Button size="sm">Add to cart</Button>
-            </figcaption>
-          </figure>
+          <Product />
+          <Product />
+          <Product />
+          <Product />
         </div>
       </section>
     </div>

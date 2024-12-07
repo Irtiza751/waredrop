@@ -31,7 +31,7 @@ export default function HomeLayout({
 }>) {
   return (
     <>
-      <div className="bg-blue-700 py-1">
+      <div className="bg-black py-1">
         <p className="text-center text-white uppercase text-sm">
           Get up to 50% of on our {getSeason(new Date().getMonth())} collection
           Sale
