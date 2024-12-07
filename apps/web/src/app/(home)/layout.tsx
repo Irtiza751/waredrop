@@ -37,7 +37,7 @@ export default function HomeLayout({
           Sale
         </p>
       </div>
-      <header className="bg-white">
+      <header className="bg-stone-50">
         <nav className="container py-4 flex items-center">
           <ul className="flex-1 flex gap-10">
             {routes.map((route, i) => {
