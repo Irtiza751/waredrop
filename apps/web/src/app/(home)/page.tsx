@@ -1,5 +1,9 @@
-import Product from "@/components/product";
+import Image from "next/image";
 import { Button } from "@waredrop/ui";
+import Product from "@/components/product";
+
+import summer from "@/assets/images/summer.jpg";
+import winter from "@/assets/images/winter.jpg";
 
 export default function Home() {
   return (
@@ -28,6 +32,41 @@ export default function Home() {
         </div>
         <div className="flex justify-center">
           <Button size="lg">Browse All collections</Button>
+        </div>
+      </section>
+
+      <section className="container grid grid-cols-2 my-5">
+        <div className="relative text-center h-[600px] bg-stone-500 flex items-center justify-center">
+          <span className="absolute inset-0 bg-black/25 z-[1]" />
+          <Image
+            alt="summer"
+            src={winter}
+            fill
+            className="object-cover object-center"
+          />
+          <Button
+            size="lg"
+            variant="secondary"
+            className="uppercase relative z-[2]"
+          >
+            winter collection
+          </Button>
+        </div>
+        <div className="relative text-center h-[600px] bg-stone-500 flex items-center justify-center">
+          <span className="absolute inset-0 bg-black/25 z-[1]" />
+          <Image
+            alt="summer"
+            src={summer}
+            fill
+            className="object-cover object-center"
+          />
+          <Button
+            size="lg"
+            variant="secondary"
+            className="uppercase relative z-[2]"
+          >
+            summer collection
+          </Button>
         </div>
       </section>
     </div>
