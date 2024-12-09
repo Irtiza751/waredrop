@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  backend:
+    container_name: backend
+    build:
+      context: .
+      dockerfile: ./apps/backend/Dockerfile
+    restart: always
+    ports:
+      - 4000:4000
+    networks:
+      - waredrop_network
+  web:
+    depends_on:
+      - backend
+    container_name: web
+    build:
+      context: .
+      dockerfile: ./apps/web/Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      - waredrop_network
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+networks:
+  waredrop_network:
+    external: true
