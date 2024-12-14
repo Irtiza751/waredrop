@@ -7,19 +7,19 @@ import { getSeason } from "@waredrop/utils";
 
 const routes = [
   {
-    href: "",
+    href: "/",
     name: "Home",
   },
   {
-    href: "",
+    href: "/shop",
     name: "Shop",
   },
   {
-    href: "",
+    href: "/shop/new-arrivals",
     name: "New Arrivals",
   },
   {
-    href: "",
+    href: "/about-us",
     name: "About Us",
   },
 ];
@@ -50,7 +50,9 @@ export default function HomeLayout({
           </ul>
 
           <div className="flex-1 flex justify-center">
-            <Image src={logo} alt="Waredrop" priority width={170} />
+            <Link href="/">
+              <Image src={logo} alt="Waredrop" priority width={170} />
+            </Link>
           </div>
 
           <div className="flex-1 space-x-2 flex items-center justify-end">
