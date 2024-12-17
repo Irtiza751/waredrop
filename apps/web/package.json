@@ -23,13 +23,13 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@waredrop/eslint-config": "*",
+    "@waredrop/tailwind-config": "*",
+    "@waredrop/ts-config": "*",
     "eslint": "^8",
     "eslint-config-next": "14.2.15",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5",
-    "@waredrop/tailwind-config": "*",
-    "@waredrop/eslint-config": "*",
-    "@waredrop/ts-config": "*"
+    "typescript": "^5"
   }
 }
