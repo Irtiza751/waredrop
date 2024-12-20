@@ -2,23 +2,36 @@ name: "CodeQL"
 
 on:
   push:
-    branches: [main, develop] # Configure branches to trigger code scanning
+    branches: [main, develop] # Trigger on main and develop branches
   pull_request:
-    branches: [main, develop] # CodeQL will run on PRs targeting these branches
+    branches: [main, develop] # Trigger on PRs targeting main or develop
+
+permissions:
+  contents: write
+  security-events: write # Explicitly define permissions
 
 jobs:
   analyze:
     name: Analyze JavaScript and TypeScript
-    runs-on: ubuntu-latest # Run on GitHub-hosted Ubuntu runner
+    runs-on: ubuntu-latest # Use GitHub-hosted Ubuntu runner
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4 # Checkout the repository
 
+      # Debug GITHUB_TOKEN Permissions
+      - name: Debug GITHUB_TOKEN Permissions
+        run: |
+          echo "Listing permissions for GITHUB_TOKEN..."
+          curl -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+          https://api.github.com/
+
+      # Initialize CodeQL
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v2
         with:
           languages: javascript, typescript # Analyze both JS and TS
 
+      # Perform CodeQL Analysis
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
