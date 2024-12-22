@@ -1,7 +1,7 @@
 import Image from "next/image";
 import hoodie from "@/assets/images/pord-img.png";
 import parseSlug from "@/utils/parse-slug";
-import { Button } from "@waredrop/ui";
+import { Button, Separator } from "@waredrop/ui";
 import Product from "@/components/product";
 
 const products = new Array(4).fill(0);
@@ -74,9 +74,8 @@ export default function page({ params }: { params: { slug: string } }) {
       </section>
       {/* related products */}
       <section className="container mt-8">
-        <h2 className="text-3xl text-center font-bold border-b pb-4 mb-5">
-          Related Products
-        </h2>
+        <h2 className="text-3xl text-center font-bold">Related Products</h2>
+        <Separator className="my-5" />
         <div className="grid grid-cols-4 gap-4">
           {products.map((_, key) => (
             <Product key={key} />
