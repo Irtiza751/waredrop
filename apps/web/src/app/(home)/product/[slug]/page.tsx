@@ -8,7 +8,7 @@ import makeArray from "@/utils/make-array";
 export default function page({ params }: { params: { slug: string } }) {
   return (
     <>
-      <section className="container grid grid-cols-5 gap-5 mt-5">
+      <section className="container grid grid-cols-5 gap-5 mt-5 relative items-start">
         <div className="col-span-3 grid grid-cols-5 grid-rows-3 gap-2">
           <div className="bg-stone-100 col-start-1 col-end-5 row-span-3 flex items-center justify-center">
             <Image alt="Hoodie" src={hoodie} />
@@ -23,7 +23,7 @@ export default function page({ params }: { params: { slug: string } }) {
             <Image alt="Hoodie" src={hoodie} />
           </div>
         </div>
-        <div className="space-y-4 col-span-2">
+        <div className="space-y-4 col-span-2 sticky top-10">
           {/* title */}
           <h2 className="capitalize text-4xl font-semibold">
             {parseSlug(params.slug)}
