@@ -4,6 +4,7 @@ import Product from "@/components/product";
 
 import summer from "@/assets/images/summer.jpg";
 import winter from "@/assets/images/winter.jpg";
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -31,7 +32,9 @@ export default function Home() {
           <Product />
         </div>
         <div className="flex justify-center">
-          <Button size="lg">Browse All collections</Button>
+          <Button asChild size="lg">
+            <Link href="/shop">Browse All collections</Link>
+          </Button>
         </div>
       </section>
 
@@ -45,11 +48,12 @@ export default function Home() {
             className="object-cover object-center"
           />
           <Button
+            asChild
             size="lg"
             variant="secondary"
             className="uppercase relative z-[2]"
           >
-            winter collection
+            <Link href="/shop/winter-collection">winter collection</Link>
           </Button>
         </div>
         <div className="relative text-center h-[600px] bg-stone-500 flex items-center justify-center">
@@ -61,11 +65,12 @@ export default function Home() {
             className="object-cover object-center"
           />
           <Button
+            asChild
             size="lg"
             variant="secondary"
             className="uppercase relative z-[2]"
           >
-            summer collection
+            <Link href="/shop/summer-collection">summer collection</Link>
           </Button>
         </div>
       </section>
