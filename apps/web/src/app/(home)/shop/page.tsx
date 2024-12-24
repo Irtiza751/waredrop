@@ -1,17 +1,5 @@
-import Product from "@/components/product";
-import ShopHeader from "@/components/shop-header";
-
-const products = new Array(12).fill(0);
+import Shop from "@/components/shop";
 
 export default function page() {
-  return (
-    <>
-      <ShopHeader />
-      <div className="grid grid-cols-4 gap-5">
-        {products.map((_, key) => (
-          <Product key={key} />
-        ))}
-      </div>
-    </>
-  );
+  return <Shop />;
 }

@@ -33,8 +33,8 @@ export default function HomeLayout({
     <>
       <div className="bg-black py-1">
         <p className="text-center text-white uppercase text-sm">
-          Get up to 50% of on our {getSeason(new Date().getMonth())} collection
-          Sale
+          Get up to 50% of on our {getSeason(new Date().getMonth() + 1)}{" "}
+          collection Sale
         </p>
       </div>
       <header className="bg-stone-50">

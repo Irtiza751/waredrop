@@ -8,12 +8,15 @@ export default function Product() {
   return (
     <figure className="group bg-stone-100 px-4 pb-4 pt-2.5 rounded-lg space-y-2 relative">
       <h6 className="absolute bg-white px-2 text-center space-x-1 text-lg right-4 top-4 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity ease-in-out duration-500">
-        {/* discount price */}
-        <span className="">$200</span>
         {/* original price */}
-        <small className="text-sm text-red-600 line-through">$400</small>
+        <span className="text-sm text-red-600">-50%</span>
+        {/* discount price */}
+        <span className="text-green-600">$200</span>
       </h6>
-      <Link href="/" className="block flex justify-center">
+      <Link
+        href="/product/gray-winter-hoodie"
+        className="block flex justify-center"
+      >
         <Image
           alt="Hoodie"
           className="aspect-square object-contain"
