@@ -5,6 +5,7 @@ import Product from "@/components/product";
 import summer from "@/assets/images/summer.jpg";
 import winter from "@/assets/images/winter.jpg";
 import Link from "next/link";
+import makeArray from "@/utils/make-array";
 
 export default function Home() {
   return (
@@ -26,10 +27,9 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-4 gap-4 container mb-5">
-          <Product />
-          <Product />
-          <Product />
-          <Product />
+          {makeArray(8).map((_, i) => (
+            <Product key={i} />
+          ))}
         </div>
         <div className="flex justify-center">
           <Button asChild size="lg">
