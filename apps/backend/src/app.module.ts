@@ -9,13 +9,14 @@ import { AuthModule } from './auth/auth.module';
 import envSchema from './config/env.validation';
 import appConfig from './config/app.config';
 import dbConfig from './config/db.config';
+import jwtConfig from './config/jwt.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
       envFilePath: '.env.dev',
-      load: [appConfig, dbConfig],
+      load: [appConfig, dbConfig, jwtConfig],
       validationSchema: envSchema,
     }),
     TypeOrmModule.forRootAsync({
