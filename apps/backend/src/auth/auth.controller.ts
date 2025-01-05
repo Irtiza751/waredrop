@@ -13,6 +13,6 @@ export class AuthController {
 
   @Post('/login')
   login(@Body() loginDto: LoginDto) {
-    return { message: 'Login successfully', loginDto };
+    return this.authService.login(loginDto);
   }
 }
