@@ -3,8 +3,7 @@ import hoodie from "@/assets/images/pord-img.png";
 import parseSlug from "@/utils/parse-slug";
 import { Button, Separator } from "@waredrop/ui";
 import Product from "@/components/product";
-
-const products = new Array(4).fill(0);
+import makeArray from "@/utils/make-array";
 
 export default function page({ params }: { params: { slug: string } }) {
   return (
@@ -77,7 +76,7 @@ export default function page({ params }: { params: { slug: string } }) {
         <h2 className="text-3xl text-center font-bold">Related Products</h2>
         <Separator className="my-5" />
         <div className="grid grid-cols-4 gap-4">
-          {products.map((_, key) => (
+          {makeArray(4).map((_, key) => (
             <Product key={key} />
           ))}
         </div>
