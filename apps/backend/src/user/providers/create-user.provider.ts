@@ -8,6 +8,10 @@ import { Users } from '../user.entity';
 import { Repository } from 'typeorm';
 import { CreateUserDto } from '../dtos/user.dto';
 import { HashingProvider } from 'src/auth/providers/hashing.provider';
+import {
+  TIMEOUT_MESSAGE,
+  USER_ALREADY_EXIST,
+} from 'src/constants/error.messages';
 
 @Injectable()
 export class CreateUserProvider {
@@ -32,12 +36,10 @@ export class CreateUserProvider {
         email: createUserDto.email,
       });
     } catch (error) {
-      throw new RequestTimeoutException(
-        'Unable to process your request at the moment please try later',
-      );
+      throw new RequestTimeoutException(TIMEOUT_MESSAGE);
     }
     if (existingUser) {
-      throw new BadRequestException('User already exist with this email');
+      throw new BadRequestException(USER_ALREADY_EXIST);
     }
     // if not then create a new user
     const user = this.userRepo.create(createUserDto);
@@ -49,9 +51,7 @@ export class CreateUserProvider {
       // save the user in the database
       return await this.userRepo.save(user);
     } catch (error) {
-      throw new RequestTimeoutException(
-        'Unable to process your request at the moment please try later',
-      );
+      throw new RequestTimeoutException(TIMEOUT_MESSAGE);
     }
   }
 }
