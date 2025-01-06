@@ -8,7 +8,7 @@ export class ArgonProvider extends HashingProvider {
     data: string | Buffer,
     encrypted: string,
   ): Promise<boolean> {
-    return data === encrypted;
+    return await argon2.verify(encrypted, data);
   }
 
   hashPassword(data: string | Buffer): Promise<string> {

@@ -3,4 +3,4 @@ export const TIMEOUT_MESSAGE =
 
 export const USER_ALREADY_EXIST = 'User already exist with this email address';
 
-export const USER_NOT_EXIST = 'User does not exist with this email address';
+export const USER_NOT_EXIST = 'User with this email address does not exist';
