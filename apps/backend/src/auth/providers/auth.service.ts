@@ -9,6 +9,7 @@ import { LoginDto } from '../dtos/login.dto';
 import { USER_NOT_EXIST } from 'src/constants/error.messages';
 import { HashingProvider } from './hashing.provider';
 import { Users } from 'src/user/user.entity';
+import { JwtProvider } from './jwt-provider';
 
 @Injectable()
 export class AuthService {
@@ -21,6 +22,10 @@ export class AuthService {
      * Inject hashing provider
      */
     private readonly hashingProvider: HashingProvider,
+    /**
+     * Inject jwt provider
+     */
+    private readonly jwtProvider: JwtProvider,
   ) {}
 
   async login(loginDto: LoginDto) {
@@ -46,6 +51,17 @@ export class AuthService {
     if (!validPassword) {
       throw new UnauthorizedException('Invalid Credentials');
     }
-    return user;
+
+    const accessToken = await this.jwtProvider.accessToken({
+      sub: user.id,
+      email: user.email,
+    });
+
+    const refreshToken = await this.jwtProvider.accessToken({
+      sub: user.id,
+      email: user.email,
+    });
+
+    return { user, refreshToken, accessToken };
   }
 }
