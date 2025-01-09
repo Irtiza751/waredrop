@@ -14,7 +14,6 @@ export class UserService {
      */
     @InjectRepository(Users)
     private readonly userRepo: Repository<Users>,
-
     /**
      * Inject creatUserProvider
      */
