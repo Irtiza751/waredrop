@@ -22,7 +22,7 @@ export class JwtProvider {
     private readonly jwtConfigService: ConfigType<typeof jwtConfig>,
   ) {}
 
-  accessToken(payload: JwtUserPayload) {
+  public accessToken(payload: JwtUserPayload) {
     return this.jwtService.signAsync(payload, {
       secret: this.jwtConfigService.jwtAccessSecret,
       issuer: this.jwtConfigService.jwtIssuer,
@@ -30,11 +30,17 @@ export class JwtProvider {
     });
   }
 
-  refreshToken(payload: JwtUserPayload) {
+  public refreshToken(payload: JwtUserPayload) {
     return this.jwtService.signAsync(payload, {
       secret: this.jwtConfigService.jwtRefreshSecret,
       issuer: this.jwtConfigService.jwtIssuer,
       expiresIn: this.jwtConfigService.jwtRefreshTtl,
+    });
+  }
+
+  public verifyToken(token: string) {
+    return this.jwtService.verifyAsync(token, {
+      secret: this.jwtConfigService.secret,
     });
   }
 }

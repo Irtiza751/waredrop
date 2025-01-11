@@ -6,6 +6,9 @@ import { HashingProvider } from './providers/hashing.provider';
 import { ArgonProvider } from './providers/argon.provider';
 import { JwtModule } from '@nestjs/jwt';
 import { JwtProvider } from './providers/jwt-provider';
+import { APP_GUARD } from '@nestjs/core';
+import { AuthGuard } from './guards/auth.guard';
+// jwt config
 import jwtConfig from 'src/config/jwt.config';
 
 @Module({
@@ -16,6 +19,7 @@ import jwtConfig from 'src/config/jwt.config';
       provide: HashingProvider,
       useClass: ArgonProvider,
     },
+    { provide: APP_GUARD, useClass: AuthGuard },
     JwtProvider,
   ],
   imports: [
