@@ -10,7 +10,7 @@
     "clean": "turbo run clean",
     "publish": "turbo run build lint test && changeset version && changeset publish",
     "web:dev": "turbo run dev --filter=web",
-    "api:dev": "turbo run dev --filter=backend",
+    "backend:dev": "turbo run dev --filter=backend",
     "app:dev": "turbo run dev --filter=backend --filter=web"
   },
   "keywords": [],
