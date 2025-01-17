@@ -22,9 +22,10 @@ import {
   Input,
   Separator,
 } from "@waredrop/ui";
+import { waredropApi } from "@/api/waredrop.api";
 
 const signupSchema = z.object({
-  username: z.string().min(5).max(150),
+  name: z.string().min(5).max(150),
   email: z.string().email(),
   password: z.string().min(6).max(150),
 });
@@ -35,14 +36,20 @@ export default function SignupPage() {
   const form = useForm<Signup>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
-      username: "",
+      name: "",
       email: "",
       password: "",
     },
   });
 
-  const onSubmit = (data: Signup) => {
+  const onSubmit = async (data: Signup) => {
     console.log(data);
+    try {
+      const res = await waredropApi.post("/user/create-user", data);
+      console.log(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -58,7 +65,7 @@ export default function SignupPage() {
           <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
             <FormField
               control={form.control}
-              name="username"
+              name="name"
               render={({ field }) => (
                 <FormItem className="space-y-2">
                   <FormLabel className="text-black">Enter username</FormLabel>
