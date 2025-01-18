@@ -27,6 +27,7 @@ import { useMutation } from "@tanstack/react-query";
 import { waredropApi } from "@/api/waredrop.api";
 import { SigninResponse } from "../interfaces/utils";
 import { useRouter } from "next/navigation";
+import useAuthStore from "@/store/auth-store";
 
 const signinSchema = z.object({
   email: z.string().email(),
@@ -37,6 +38,7 @@ type Signin = z.infer<typeof signinSchema>;
 
 export default function SigninPage() {
   const router = useRouter();
+  const setUserInGlobalStore = useAuthStore((store) => store.setUser);
   const signInMutation = useMutation({
     mutationKey: ["login"],
     mutationFn: (data: Signin) =>
@@ -48,7 +50,7 @@ export default function SigninPage() {
       if (defaultOptions) {
         defaultOptions.Authorization = accessToken;
       }
-
+      setUserInGlobalStore(response.data.user);
       return router.push("/");
     },
     onError(error) {
