@@ -3,6 +3,7 @@ import { Inter as Font } from "next/font/google";
 // styles
 import "./globals.css";
 import "@waredrop/ui/index.css";
+import { ReactQueryProvider } from "@/providers/query-provider";
 
 const font = Font({ subsets: ["latin"] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${font.className} min-h-screen antialiased`}>
-        {children}
+        <ReactQueryProvider>{children}</ReactQueryProvider>
       </body>
     </html>
   );

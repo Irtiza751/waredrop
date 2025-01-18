@@ -39,7 +39,7 @@ export default function HomeLayout({
       </div>
       <header className="bg-stone-50">
         <nav className="container py-4 flex items-center">
-          <ul className="flex-1 flex gap-10">
+          <ul className="flex-1 xl:flex hidden gap-10">
             {routes.map((route, i) => {
               return (
                 <li key={i}>
@@ -49,7 +49,7 @@ export default function HomeLayout({
             })}
           </ul>
 
-          <div className="flex-1 flex justify-center">
+          <div className="flex-1 flex xl:justify-center">
             <Link href="/">
               <Image src={logo} alt="Waredrop" priority width={170} />
             </Link>

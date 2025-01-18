@@ -1,11 +1,9 @@
 import Image from "next/image";
 import { Button } from "@waredrop/ui";
-import Product from "@/components/product";
-
 import summer from "@/assets/images/summer.jpg";
 import winter from "@/assets/images/winter.jpg";
 import Link from "next/link";
-import makeArray from "@/utils/make-array";
+import ProductList from "@/components/product-list";
 
 export default function Home() {
   return (
@@ -13,7 +11,7 @@ export default function Home() {
       {/* hero section */}
       <section className="h-96 container bg-stone-100 rounded-lg mt-5">
         <div className="relative h-full flex items-center justify-center pb-10">
-          <h2 className="text-5xl max-w-4xl font-semibold text-center leading-normal text-black">
+          <h2 className="lg:text-5xl md:text-4xl text-3xl max-w-4xl font-semibold text-center leading-normal text-black">
             Seamless shopping for stylish looks that don&apos;t break the bank.
           </h2>
         </div>
@@ -21,24 +19,21 @@ export default function Home() {
 
       <section>
         <div className="container">
-          <h3 className="text-center text-4xl mb-5 mt-16 max-w-lg mx-auto">
+          <h3 className="text-center lg:text-4xl text-3xl mb-5 mt-16 max-w-lg mx-auto">
             Fresh arrivals and new selections
           </h3>
         </div>
 
-        <div className="grid grid-cols-4 gap-4 container mb-5">
-          {makeArray(8).map((_, i) => (
-            <Product key={i} />
-          ))}
-        </div>
-        <div className="flex justify-center">
+        <ProductList />
+
+        <div className="flex justify-center mt-4">
           <Button asChild size="lg">
             <Link href="/shop">Browse All collections</Link>
           </Button>
         </div>
       </section>
 
-      <section className="container grid grid-cols-2 my-5">
+      <section className="container grid lg:grid-cols-2 md:grid-cols-2 lg:gap-0 md:gap-0 gap-2 my-5">
         <div className="relative text-center h-[600px] bg-stone-500 flex items-center justify-center">
           <span className="absolute inset-0 bg-black/25 z-[1]" />
           <Image
