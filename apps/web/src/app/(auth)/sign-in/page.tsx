@@ -23,6 +23,10 @@ import {
   FormLabel,
   FormMessage,
 } from "@waredrop/ui";
+import { useMutation } from "@tanstack/react-query";
+import { waredropApi } from "@/api/waredrop.api";
+import { SigninResponse } from "../interfaces/utils";
+import { useRouter } from "next/navigation";
 
 const signinSchema = z.object({
   email: z.string().email(),
@@ -32,6 +36,26 @@ const signinSchema = z.object({
 type Signin = z.infer<typeof signinSchema>;
 
 export default function SigninPage() {
+  const router = useRouter();
+  const signInMutation = useMutation({
+    mutationKey: ["login"],
+    mutationFn: (data: Signin) =>
+      waredropApi.post<SigninResponse>("/auth/login", data),
+    onSuccess(response) {
+      console.log(response);
+      const { accessToken } = response.data;
+      const defaultOptions = waredropApi.defaults.headers.options;
+      if (defaultOptions) {
+        defaultOptions.Authorization = accessToken;
+      }
+
+      return router.push("/");
+    },
+    onError(error) {
+      console.log(error);
+    },
+  });
+
   const form = useForm<Signin>({
     resolver: zodResolver(signinSchema),
     defaultValues: {
@@ -42,6 +66,7 @@ export default function SigninPage() {
 
   const onSubmit = (data: Signin) => {
     console.log(data);
+    signInMutation.mutate(data);
   };
 
   return (

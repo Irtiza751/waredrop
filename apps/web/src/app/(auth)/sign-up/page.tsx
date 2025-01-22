@@ -5,6 +5,8 @@ import Link from "next/link";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useMutation } from "@tanstack/react-query";
+import { waredropApi } from "@/api/waredrop.api";
 import {
   Form,
   FormControl,
@@ -22,7 +24,6 @@ import {
   Input,
   Separator,
 } from "@waredrop/ui";
-import { waredropApi } from "@/api/waredrop.api";
 
 const signupSchema = z.object({
   name: z.string().min(5).max(150),
@@ -33,6 +34,17 @@ const signupSchema = z.object({
 type Signup = z.infer<typeof signupSchema>;
 
 export default function SignupPage() {
+  const signUpMutation = useMutation({
+    mutationKey: ["signup"],
+    mutationFn: (data: Signup) => waredropApi.post("/user/create-user", data),
+    onSuccess(response) {
+      console.log(response);
+    },
+    onError(error) {
+      console.log(error);
+    },
+  });
+
   const form = useForm<Signup>({
     resolver: zodResolver(signupSchema),
     defaultValues: {
@@ -42,14 +54,9 @@ export default function SignupPage() {
     },
   });
 
-  const onSubmit = async (data: Signup) => {
+  const onSubmit = (data: Signup) => {
     console.log(data);
-    try {
-      const res = await waredropApi.post("/user/create-user", data);
-      console.log(res);
-    } catch (error) {
-      console.log(error);
-    }
+    signUpMutation.mutate(data);
   };
 
   return (
