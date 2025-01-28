@@ -1,13 +1,17 @@
+"use client";
+
 import { FiShoppingBag, FiSearch } from "react-icons/fi";
 import { Avatar, AvatarFallback, AvatarImage, Button } from "@waredrop/ui";
 import { routes } from "@/constants/routes";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
-import { getToken } from "@/actions/get-token";
+import useAuthStore from "@/store/auth-store";
 
-export default async function Navbar() {
-  const token = await getToken();
+export default function Navbar() {
+  const user = useAuthStore((store) => store.user);
+
+  console.log(user);
 
   return (
     <header className="bg-stone-50">
@@ -36,7 +40,7 @@ export default async function Navbar() {
             <FiShoppingBag size={20} />
           </Button>
 
-          {token ? (
+          {user ? (
             <Avatar>
               <AvatarImage src="https://github.com/Irtiza751.png" />
               <AvatarFallback>CN</AvatarFallback>
