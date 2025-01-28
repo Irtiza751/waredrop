@@ -1,28 +1,10 @@
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
-import { Button, Separator } from "@waredrop/ui";
+import { Separator } from "@waredrop/ui";
 import Link from "next/link";
-import { FiShoppingBag, FiSearch } from "react-icons/fi";
 import { getSeason } from "@waredrop/utils";
-
-const routes = [
-  {
-    href: "/",
-    name: "Home",
-  },
-  {
-    href: "/shop",
-    name: "Shop",
-  },
-  {
-    href: "/shop/new-arrivals",
-    name: "New Arrivals",
-  },
-  {
-    href: "/about-us",
-    name: "About Us",
-  },
-];
+import { routes } from "@/constants/routes";
+import Navbar from "@/components/navbar";
 
 export default function HomeLayout({
   children,
@@ -37,38 +19,10 @@ export default function HomeLayout({
           collection Sale
         </p>
       </div>
-      <header className="bg-stone-50">
-        <nav className="container py-4 flex items-center">
-          <ul className="flex-1 xl:flex hidden gap-10">
-            {routes.map((route, i) => {
-              return (
-                <li key={i}>
-                  <Link href={route.href}>{route.name}</Link>
-                </li>
-              );
-            })}
-          </ul>
-
-          <div className="flex-1 flex xl:justify-center">
-            <Link href="/">
-              <Image src={logo} alt="Waredrop" priority width={170} />
-            </Link>
-          </div>
-
-          <div className="flex-1 space-x-2 flex items-center justify-end">
-            <Button size="icon" variant="link">
-              <FiSearch size={20} />
-            </Button>
-            <Button size="icon" variant="link">
-              <FiShoppingBag size={20} />
-            </Button>
-            <Button asChild variant="link">
-              <Link href="/sign-in">Sign In</Link>
-            </Button>
-          </div>
-        </nav>
-      </header>
+      <Navbar />
+      {/* main body */}
       <main className="min-h-screen">{children}</main>
+      {/* footer */}
       <footer className="bg-stone-100">
         <div className="flex justify-center py-5 mt-4">
           <Image src={logo} alt="Waredrop" priority width={170} />
