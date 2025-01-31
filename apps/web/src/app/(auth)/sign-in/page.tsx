@@ -25,30 +25,30 @@ import {
 } from "@waredrop/ui";
 import { useMutation } from "@tanstack/react-query";
 import { waredropApi } from "@/api/waredrop.api";
-import { SigninResponse } from "../interfaces/utils";
 import { useRouter } from "next/navigation";
+import { signin } from "../actions";
+import useAuthStore from "@/store/auth-store";
 
 const signinSchema = z.object({
   email: z.string().email(),
   password: z.string().min(6).max(150),
 });
 
-type Signin = z.infer<typeof signinSchema>;
+export type Signin = z.infer<typeof signinSchema>;
 
 export default function SigninPage() {
   const router = useRouter();
+  const setUserInGlobalStore = useAuthStore((store) => store.setUser);
   const signInMutation = useMutation({
     mutationKey: ["login"],
-    mutationFn: (data: Signin) =>
-      waredropApi.post<SigninResponse>("/auth/login", data),
+    mutationFn: signin,
     onSuccess(response) {
-      console.log(response);
-      const { accessToken } = response.data;
+      const { accessToken } = response;
       const defaultOptions = waredropApi.defaults.headers.options;
       if (defaultOptions) {
         defaultOptions.Authorization = accessToken;
       }
-
+      setUserInGlobalStore(response.user);
       return router.push("/");
     },
     onError(error) {
