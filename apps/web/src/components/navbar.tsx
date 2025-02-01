@@ -1,7 +1,18 @@
 "use client";
 
 import { FiShoppingBag, FiSearch } from "react-icons/fi";
-import { Avatar, AvatarFallback, AvatarImage, Button } from "@waredrop/ui";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@waredrop/ui";
 import { routes } from "@/constants/routes";
 import Link from "next/link";
 import Image from "next/image";
@@ -41,10 +52,22 @@ export default function Navbar() {
           </Button>
 
           {user ? (
-            <Avatar>
-              <AvatarImage src="https://github.com/Irtiza751.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar>
+                  <AvatarImage src="https://github.com/Irtiza751.png" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Billing</DropdownMenuItem>
+                <DropdownMenuItem>Team</DropdownMenuItem>
+                <DropdownMenuItem>Subscription</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           ) : (
             <Button asChild variant="link">
               <Link href="/sign-in">Sign In</Link>
