@@ -64,4 +64,8 @@ export class AuthService {
 
     return { user, refreshToken, accessToken };
   }
+
+  getSignedInUser(id: number) {
+    return this.userService.findUserById(id);
+  }
 }
