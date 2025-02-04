@@ -1,5 +1,3 @@
-"use client";
-
 // import { useAuthToken } from "@/providers/auth-provider";
 // import useAuthStore from "@/store/auth-store";
 import Product from "./product";
