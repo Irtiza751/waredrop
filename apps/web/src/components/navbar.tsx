@@ -18,12 +18,9 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 import useAuthStore from "@/store/auth-store";
-import { useAuthToken } from "@/providers/auth-provider";
 
 export default function Navbar() {
   const user = useAuthStore((store) => store.user);
-  const token = useAuthToken();
-
   console.log(user);
 
   return (
@@ -53,7 +50,7 @@ export default function Navbar() {
             <FiShoppingBag size={20} />
           </Button>
 
-          {user || token ? (
+          {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Avatar>
