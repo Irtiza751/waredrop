@@ -12,7 +12,8 @@
   ],
   "exports": {
     ".": "./src/index.tsx",
-    "./index.css": "./dist/index.css"
+    "./index.css": "./dist/index.css",
+    "./core": "./src/core/index.tsx"
   },
   "scripts": {
     "dev": "tailwindcss -i ./src/index.css -o ./dist/index.css --watch",
