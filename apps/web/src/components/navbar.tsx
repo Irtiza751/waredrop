@@ -18,10 +18,23 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 import useAuthStore from "@/store/auth-store";
+import { extractUserName } from "@/utils/extract-username";
+import { clearSession } from "@/actions/clear-session";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
   const user = useAuthStore((store) => store.user);
+  const router = useRouter();
+
   console.log(user);
+
+  const signOut = async () => {
+    const res = await clearSession();
+    console.log(res);
+    if (res === "done") {
+      router.push("/sign-in");
+    }
+  };
 
   return (
     <header className="bg-stone-50">
@@ -55,7 +68,7 @@ export default function Navbar() {
               <DropdownMenuTrigger asChild>
                 <Avatar>
                   <AvatarImage src="https://github.com/Irtiza751.png" />
-                  <AvatarFallback>CN</AvatarFallback>
+                  <AvatarFallback>{extractUserName(user.name)}</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-52 -translate-x-[50px]">
@@ -63,7 +76,7 @@ export default function Navbar() {
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Profile</DropdownMenuItem>
                 <DropdownMenuItem>Settings</DropdownMenuItem>
-                <DropdownMenuItem>Sign out</DropdownMenuItem>
+                <DropdownMenuItem onClick={signOut}>Sign out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
           ) : (
