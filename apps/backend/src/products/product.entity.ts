@@ -5,7 +5,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
-import { ProductStatus } from '../enums/product-status.enum';
+import { ProductStatus } from './enums/product-status.enum';
 
 @Entity()
 export class Product {
