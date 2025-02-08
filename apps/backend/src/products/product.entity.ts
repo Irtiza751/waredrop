@@ -2,10 +2,13 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { ProductStatus } from './enums/product-status.enum';
+import { Users } from 'src/user/user.entity';
 
 @Entity()
 export class Product {
@@ -54,4 +57,8 @@ export class Product {
     name: 'updated_at',
   })
   updatedAt: Date;
+
+  @ManyToOne(() => Users)
+  @JoinColumn({ name: 'id' })
+  seller: Users; // single user
 }
