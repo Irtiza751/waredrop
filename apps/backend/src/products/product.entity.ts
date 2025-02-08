@@ -2,12 +2,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
-  ManyToOne,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm';
 import { ProductStatus } from './enums/product-status.enum';
-import { Users } from 'src/user/user.entity';
 
 @Entity()
 export class Product {
@@ -46,9 +44,6 @@ export class Product {
     default: ProductStatus.DRAFT,
   })
   status: string;
-
-  @ManyToOne(() => Users, (user) => user.products)
-  seller: Users; // single user
 
   @CreateDateColumn({
     name: 'created_at',
