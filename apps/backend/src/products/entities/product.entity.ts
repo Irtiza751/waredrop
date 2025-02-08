@@ -1,45 +1,49 @@
 import {
   Column,
+  CreateDateColumn,
   Entity,
   PrimaryGeneratedColumn,
-  CreateDateColumn,
   UpdateDateColumn,
 } from 'typeorm';
+import { ProductStatus } from '../enums/product-status.enum';
 
 @Entity()
-export class Users {
+export class Product {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({
     type: 'varchar',
+    length: 256,
     nullable: false,
-    length: 90,
   })
-  name: string;
+  title: string;
 
   @Column({
-    type: 'varchar',
-    length: 90,
-    nullable: false,
-    unique: true,
-  })
-  email: string;
-
-  @Column({
-    type: 'varchar',
-    length: 15,
+    type: 'text',
     nullable: true,
-    unique: true,
   })
-  phone: string;
+  description: string;
 
   @Column({
-    type: 'varchar',
+    type: 'decimal',
     nullable: false,
-    length: 100,
   })
-  password: string;
+  price: number;
+
+  @Column({
+    type: 'decimal',
+    nullable: false,
+  })
+  quantity: number;
+
+  @Column({
+    type: 'enum',
+    nullable: false,
+    enum: ProductStatus,
+    default: ProductStatus.DRAFT,
+  })
+  status: string;
 
   @CreateDateColumn({
     name: 'created_at',
@@ -50,12 +54,4 @@ export class Users {
     name: 'updated_at',
   })
   updatedAt: Date;
-
-  @Column({
-    name: 'is_seller',
-    nullable: true,
-    type: 'boolean',
-    default: true,
-  })
-  isSeller: boolean;
 }
