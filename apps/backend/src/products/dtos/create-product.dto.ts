@@ -5,6 +5,7 @@ import {
   IsOptional,
   IsString,
   MaxLength,
+  IsUrl,
 } from 'class-validator';
 import { ProductStatus } from '../enums/product-status.enum';
 
@@ -17,6 +18,11 @@ export class CreateProductDto {
   @IsString()
   @IsNotEmpty()
   description: string;
+
+  @IsString()
+  @IsNotEmpty()
+  @IsUrl()
+  image: string;
 
   @IsNumber()
   price: number;

@@ -29,6 +29,13 @@ export class Product {
   description: string;
 
   @Column({
+    type: 'varchar',
+    nullable: false,
+    name: 'image',
+  })
+  image: string;
+
+  @Column({
     type: 'decimal',
     nullable: false,
   })
@@ -58,7 +65,7 @@ export class Product {
   })
   updatedAt: Date;
 
-  @ManyToOne(() => Users)
-  @JoinColumn({ name: 'id' })
+  @ManyToOne(() => Users, (user) => user.id, { cascade: true })
+  @JoinColumn({ name: 'seller_id', referencedColumnName: 'id' })
   seller: Users; // single user
 }
