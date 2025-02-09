@@ -1,15 +1,28 @@
 "use client";
 
 import { FiShoppingBag, FiSearch } from "react-icons/fi";
-import { Avatar, AvatarFallback, AvatarImage, Button } from "@waredrop/ui";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+  Button,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@waredrop/ui";
 import { routes } from "@/constants/routes";
 import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 import useAuthStore from "@/store/auth-store";
+import { useAuthToken } from "@/providers/auth-provider";
 
 export default function Navbar() {
   const user = useAuthStore((store) => store.user);
+  const token = useAuthToken();
 
   console.log(user);
 
@@ -40,11 +53,22 @@ export default function Navbar() {
             <FiShoppingBag size={20} />
           </Button>
 
-          {user ? (
-            <Avatar>
-              <AvatarImage src="https://github.com/Irtiza751.png" />
-              <AvatarFallback>CN</AvatarFallback>
-            </Avatar>
+          {user || token ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Avatar>
+                  <AvatarImage src="https://github.com/Irtiza751.png" />
+                  <AvatarFallback>CN</AvatarFallback>
+                </Avatar>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-52 -translate-x-[50px]">
+                <DropdownMenuLabel>Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>Sign out</DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
           ) : (
             <Button asChild variant="link">
               <Link href="/sign-in">Sign In</Link>
