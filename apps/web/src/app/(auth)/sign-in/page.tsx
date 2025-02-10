@@ -44,10 +44,7 @@ export default function SigninPage() {
     mutationFn: signin,
     onSuccess(response) {
       const { accessToken } = response;
-      const defaultOptions = waredropApi.defaults.headers.options;
-      if (defaultOptions) {
-        defaultOptions.Authorization = accessToken;
-      }
+      waredropApi.defaults.headers.Authorization = `Bearer ${accessToken}`;
       setUserInGlobalStore(response.user);
       return router.push("/");
     },

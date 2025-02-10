@@ -18,6 +18,6 @@ export default Joi.object({
   JWT_ACCESS_SECRET: Joi.string().required(),
   JWT_REFRESH_SECRET: Joi.string().required(),
   JWT_ISSUER: Joi.string().required(),
-  JWT_ACCESS_TTL: Joi.number().required(),
-  JWT_REFRESH_TTL: Joi.number().required(),
+  JWT_ACCESS_TTL: Joi.string().required(),
+  JWT_REFRESH_TTL: Joi.string().required(),
 });
