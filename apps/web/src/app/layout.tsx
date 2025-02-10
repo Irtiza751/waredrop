@@ -5,6 +5,7 @@ import "./globals.css";
 import "@waredrop/ui/index.css";
 import { ReactQueryProvider } from "@/providers/query-provider";
 import { AuthProvider } from "@/providers/auth-provider";
+import { UserProvider } from "@/providers/user-provider";
 
 const font = Font({ subsets: ["latin"] });
 
@@ -22,7 +23,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${font.className} min-h-screen antialiased`}>
         <ReactQueryProvider>
-          <AuthProvider>{children}</AuthProvider>
+          <AuthProvider>
+            <UserProvider>{children}</UserProvider>
+          </AuthProvider>
         </ReactQueryProvider>
       </body>
     </html>

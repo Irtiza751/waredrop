@@ -2,8 +2,10 @@
   "extends": "@waredrop/ts-config/react-library.json",
   "compilerOptions": {
     "outDir": "dist",
+    "baseUrl": "./src",
     "paths": {
-      "react": ["./node_modules/@types/react"]
+      "react": ["./node_modules/@types/react"],
+      "@/*": ["./*"]
     }
   },
   "include": ["src", "index.ts"],

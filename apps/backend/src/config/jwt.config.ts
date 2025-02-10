@@ -5,6 +5,6 @@ export default registerAs('jwt', () => ({
   secret: process.env.JWT_ACCESS_SECRET,
   jwtAccessSecret: process.env.JWT_ACCESS_SECRET,
   jwtRefreshSecret: process.env.JWT_REFRESH_SECRET,
-  jwtAccessTtl: parseInt(process.env.JWT_ACCESS_TTL, 10),
-  jwtRefreshTtl: parseInt(process.env.JWT_ACCESS_TTL, 10),
+  jwtAccessTtl: process.env.JWT_ACCESS_TTL,
+  jwtRefreshTtl: process.env.JWT_ACCESS_TTL,
 }));
