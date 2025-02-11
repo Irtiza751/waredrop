@@ -28,6 +28,14 @@ export class Users {
 
   @Column({
     type: 'varchar',
+    length: 15,
+    nullable: true,
+    unique: true,
+  })
+  phone: string;
+
+  @Column({
+    type: 'varchar',
     nullable: false,
     length: 100,
   })
@@ -42,4 +50,12 @@ export class Users {
     name: 'updated_at',
   })
   updatedAt: Date;
+
+  @Column({
+    name: 'is_seller',
+    nullable: true,
+    type: 'boolean',
+    default: true,
+  })
+  isSeller: boolean;
 }

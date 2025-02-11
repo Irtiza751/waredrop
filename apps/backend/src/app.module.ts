@@ -10,6 +10,7 @@ import envSchema from './config/env.validation';
 import appConfig from './config/app.config';
 import dbConfig from './config/db.config';
 import jwtConfig from './config/jwt.config';
+import { ProductModule } from './products/product.module';
 
 @Module({
   imports: [
@@ -35,6 +36,7 @@ import jwtConfig from './config/jwt.config';
     }),
     UserModule,
     AuthModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
