@@ -2,13 +2,12 @@ import Image from "next/image";
 import hoodie from "@/assets/images/pord-img.png";
 import parseSlug from "@/utils/parse-slug";
 import { Button, Separator } from "@waredrop/ui";
-import Product from "@/components/product";
-import makeArray from "@/utils/make-array";
+import ProductList from "@/components/product-list";
 
 export default function page({ params }: { params: { slug: string } }) {
   return (
     <>
-      <section className="container grid grid-cols-5 gap-5 mt-5 relative items-start">
+      <section className="container lg:grid md:grid grid-cols-5 gap-5 mt-5 relative items-start">
         <div className="col-span-3 grid grid-cols-5 grid-rows-3 gap-2">
           <div className="bg-stone-100 col-start-1 col-end-5 row-span-3 flex items-center justify-center">
             <Image alt="Hoodie" src={hoodie} />
@@ -75,11 +74,7 @@ export default function page({ params }: { params: { slug: string } }) {
       <section className="container mt-8">
         <h2 className="text-3xl text-center font-bold">Related Products</h2>
         <Separator className="my-5" />
-        <div className="grid grid-cols-4 gap-4">
-          {makeArray(4).map((_, key) => (
-            <Product key={key} />
-          ))}
-        </div>
+        <ProductList size={4} />
       </section>
     </>
   );
