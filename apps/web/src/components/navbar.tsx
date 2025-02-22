@@ -71,11 +71,12 @@ export default function Navbar() {
                   <AvatarFallback>{extractUserName(user.name)}</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-52 -translate-x-[50px]">
+              <DropdownMenuContent className="w-52">
                 <DropdownMenuLabel>Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem>Profile</DropdownMenuItem>
-                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuItem>
+                  <Link href="/settings">Settings</Link>
+                </DropdownMenuItem>
                 <DropdownMenuItem onClick={signOut}>Sign out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
