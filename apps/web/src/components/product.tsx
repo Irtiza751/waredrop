@@ -4,9 +4,9 @@ import { Button } from "@waredrop/ui";
 
 import { Product as IProduct } from "@/types/product-interface";
 
-interface Props extends IProduct {}
+// interface Props extends IProduct {}
 
-export default function Product({ image, price, title }: Props) {
+export default function Product({ image, price, title }: IProduct) {
   const { format } = Intl.NumberFormat("en", {
     currency: "USD",
     style: "currency",

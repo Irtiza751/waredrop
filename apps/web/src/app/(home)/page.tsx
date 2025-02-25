@@ -3,9 +3,18 @@ import { Button } from "@waredrop/ui";
 import summer from "@/assets/images/summer.jpg";
 import winter from "@/assets/images/winter.jpg";
 import Link from "next/link";
+import { waredropApi } from "@/api/waredrop.api";
+import { Product as IProduct } from "@/types/product-interface";
 import ProductList from "@/components/product-list";
+import { notFound } from "next/navigation";
 
-export default function Home() {
+export default async function Home() {
+  const { data } = await waredropApi.get<IProduct[]>("/products");
+
+  if (!data) {
+    return notFound();
+  }
+
   return (
     <div>
       {/* hero section */}
@@ -24,7 +33,7 @@ export default function Home() {
           </h3>
         </div>
 
-        <ProductList />
+        <ProductList data={data} />
 
         <div className="flex justify-center mt-4">
           <Button asChild size="lg">
