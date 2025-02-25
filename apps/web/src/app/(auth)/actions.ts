@@ -2,7 +2,7 @@
 
 import { waredropApi } from "@/api/waredrop.api";
 import { Signin } from "./sign-in/page";
-import { SigninResponse } from "./interfaces/utils";
+import { SigninResponse } from "../../interfaces/utils";
 import { cookies } from "next/headers";
 
 const cookieOptions = {
