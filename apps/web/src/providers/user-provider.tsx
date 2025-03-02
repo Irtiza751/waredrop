@@ -1,6 +1,6 @@
 "use client";
 import { waredropApi } from "@/api/waredrop.api";
-import { User } from "@/app/(auth)/interfaces/utils";
+import { User } from "@/interfaces/utils";
 import useAuthStore from "@/store/auth-store";
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext, useEffect } from "react";
