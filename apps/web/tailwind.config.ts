@@ -10,7 +10,17 @@ const config: Config = {
   ],
   presets: [shared],
   theme: {
-    extend: {},
+    extend: {
+      container: {
+        padding: {
+          default: "1rem",
+          "2xl": "3rem",
+          xl: "3rem",
+          lg: "3rem",
+          sm: "2rem",
+        },
+      },
+    },
   },
 };
 export default config;

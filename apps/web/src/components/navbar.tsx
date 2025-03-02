@@ -1,6 +1,6 @@
 "use client";
 
-import { FiShoppingBag, FiSearch } from "react-icons/fi";
+import { FiShoppingBag, FiSearch, FiUser } from "react-icons/fi";
 import {
   Avatar,
   AvatarFallback,
@@ -37,8 +37,8 @@ export default function Navbar() {
   };
 
   return (
-    <header className="bg-stone-50">
-      <nav className="container py-4 flex items-center">
+    <header className="bg-white">
+      <nav className="container py-4 flex items-center border-b">
         <ul className="flex-1 xl:flex hidden gap-10">
           {routes.map((route, i) => {
             return (
@@ -55,21 +55,16 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="flex-1 space-x-2 flex items-center justify-end">
+        <div className="flex-1 space-x-3 flex items-center justify-end">
           <Button size="icon" variant="link">
             <FiSearch size={20} />
           </Button>
-          <Button size="icon" variant="link">
-            <FiShoppingBag size={20} />
-          </Button>
-
           {user ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
-                <Avatar>
-                  <AvatarImage src="https://github.com/Irtiza751.png" />
-                  <AvatarFallback>{extractUserName(user.name)}</AvatarFallback>
-                </Avatar>
+                <Button size="icon" variant="link">
+                  <FiUser size={20} />
+                </Button>
               </DropdownMenuTrigger>
               <DropdownMenuContent className="w-52 -translate-x-[50px]">
                 <DropdownMenuLabel>Account</DropdownMenuLabel>
@@ -84,6 +79,9 @@ export default function Navbar() {
               <Link href="/sign-in">Sign In</Link>
             </Button>
           )}
+          <Button size="icon" variant="link">
+            <FiShoppingBag size={20} />
+          </Button>
         </div>
       </nav>
     </header>
