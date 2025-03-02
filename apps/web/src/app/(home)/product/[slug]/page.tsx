@@ -74,7 +74,7 @@ export default function page({ params }: { params: { slug: string } }) {
       <section className="container mt-8">
         <h2 className="text-3xl text-center font-bold">Related Products</h2>
         <Separator className="my-5" />
-        <ProductList size={4} />
+        <ProductList />
       </section>
     </>
   );
