@@ -34,7 +34,7 @@ export default async function Detail({ params }: { params: { slug: string } }) {
         <div className="space-y-4 col-span-2 sticky top-10">
           {/* title */}
           <h2 className="capitalize text-4xl font-semibold">
-            {parseSlug(params.slug)}
+            {decodeURIComponent(parseSlug(params.slug))}
           </h2>
           {/* price */}
           <div className="flex justify-between items-center">

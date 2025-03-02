@@ -32,8 +32,9 @@ export default async function Home() {
             Fresh arrivals and new selections
           </h3>
         </div>
-
-        <ProductList data={data} />
+        <div className="container">
+          <ProductList data={data} />
+        </div>
 
         <div className="flex justify-center mt-4">
           <Button asChild size="lg">
