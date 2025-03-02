@@ -66,7 +66,7 @@ export default function Navbar() {
                   <FiUser size={20} />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-52 -translate-x-[50px]">
+              <DropdownMenuContent className="w-52" align="end">
                 <DropdownMenuLabel>Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>Profile</DropdownMenuItem>
@@ -74,14 +74,15 @@ export default function Navbar() {
                 <DropdownMenuItem onClick={signOut}>Sign out</DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
-          ) : (
-            <Button asChild variant="link">
-              <Link href="/sign-in">Sign In</Link>
-            </Button>
-          )}
+          ) : null}
           <Button size="icon" variant="link">
             <FiShoppingBag size={20} />
           </Button>
+          {!user ? (
+            <Button asChild variant="link">
+              <Link href="/sign-in">Sign In</Link>
+            </Button>
+          ) : null}
         </div>
       </nav>
     </header>
