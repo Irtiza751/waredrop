@@ -26,14 +26,16 @@ export default function Product({ image, price, title }: IProduct) {
         />
       </Link>
       <figcaption className="block">
-        <div className="flex justify-between">
+        <div className="flex justify-between text-sm">
           <div>
-            <Link className="text-sm" href={`/product/${title}`}>
+            <Link className="" href={`/product/${title}`}>
               <span>{title}</span>
             </Link>
-            <p className="text-sm text-stone-600">Black</p>
+            <p className="text-stone-600">Black</p>
           </div>
-          <h5 className="text-black">{format(parseFloat(price))}</h5>
+          <h5 className="text-black font-medium">
+            {format(parseFloat(price))}
+          </h5>
         </div>
       </figcaption>
     </figure>
