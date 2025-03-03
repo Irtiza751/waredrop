@@ -71,7 +71,7 @@ export default function Navbar() {
                   <AvatarFallback>{extractUserName(user.name)}</AvatarFallback>
                 </Avatar>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-52">
+              <DropdownMenuContent className="w-52" align="end">
                 <DropdownMenuLabel>Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuItem>
