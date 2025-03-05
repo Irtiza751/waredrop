@@ -3,8 +3,17 @@ import hoodie from "@/assets/images/pord-img.png";
 import parseSlug from "@/utils/parse-slug";
 import { Button, Separator } from "@waredrop/ui";
 import ProductList from "@/components/product-list";
+import { Product as IProduct } from "@/types/product-interface";
+import { waredropApi } from "@/api/waredrop.api";
+import { notFound } from "next/navigation";
 
-export default function page({ params }: { params: { slug: string } }) {
+export default async function Detail({ params }: { params: { slug: string } }) {
+  const { data } = await waredropApi.get<IProduct[]>("/products");
+
+  if (!data) {
+    return notFound();
+  }
+
   return (
     <>
       <section className="container lg:grid md:grid grid-cols-5 gap-5 mt-5 relative items-start">
@@ -25,7 +34,7 @@ export default function page({ params }: { params: { slug: string } }) {
         <div className="space-y-4 col-span-2 sticky top-10">
           {/* title */}
           <h2 className="capitalize text-4xl font-semibold">
-            {parseSlug(params.slug)}
+            {decodeURIComponent(parseSlug(params.slug))}
           </h2>
           {/* price */}
           <div className="flex justify-between items-center">
@@ -74,7 +83,7 @@ export default function page({ params }: { params: { slug: string } }) {
       <section className="container mt-8">
         <h2 className="text-3xl text-center font-bold">Related Products</h2>
         <Separator className="my-5" />
-        <ProductList />
+        <ProductList data={data} />
       </section>
     </>
   );
