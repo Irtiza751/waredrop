@@ -13,12 +13,6 @@ export default function HomeLayout({
 }>) {
   return (
     <>
-      <div className="bg-black py-1">
-        <p className="text-center text-white uppercase text-sm">
-          Get up to 50% of on our {getSeason(new Date().getMonth() + 1)}{" "}
-          collection Sale
-        </p>
-      </div>
       <Navbar />
       {/* main body */}
       <main className="min-h-screen">{children}</main>

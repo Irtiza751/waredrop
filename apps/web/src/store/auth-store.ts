@@ -1,4 +1,4 @@
-import { User } from "@/app/(auth)/interfaces/utils";
+import { User } from "@/interfaces/utils";
 import { create } from "zustand";
 
 interface AuthStore {

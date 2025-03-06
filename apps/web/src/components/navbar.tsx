@@ -1,10 +1,10 @@
 "use client";
 
-import { FiShoppingBag, FiSearch } from "react-icons/fi";
+import { FiShoppingBag, FiSearch, FiUser } from "react-icons/fi";
 import {
-  Avatar,
-  AvatarFallback,
-  AvatarImage,
+  // Avatar,
+  // AvatarFallback,
+  // AvatarImage,
   Button,
   DropdownMenu,
   DropdownMenuContent,
@@ -18,7 +18,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 import useAuthStore from "@/store/auth-store";
-import { extractUserName } from "@/utils/extract-username";
+// import { extractUserName } from "@/utils/extract-username";
 import { clearSession } from "@/actions/clear-session";
 import { useRouter } from "next/navigation";
 
@@ -37,8 +37,8 @@ export default function Navbar() {
   };
 
   return (
-    <header className="bg-stone-50">
-      <nav className="container py-4 flex items-center">
+    <header className="bg-white">
+      <nav className="container py-4 flex items-center border-b">
         <ul className="flex-1 xl:flex hidden gap-10">
           {routes.map((route, i) => {
             return (
@@ -55,31 +55,33 @@ export default function Navbar() {
           </Link>
         </div>
 
-        <div className="flex-1 space-x-2 flex items-center justify-end">
+        <div className="flex-1 space-x-3 flex items-center justify-end">
           <Button size="icon" variant="link">
             <FiSearch size={20} />
           </Button>
-          <Button size="icon" variant="link">
-            <FiShoppingBag size={20} />
-          </Button>
-
           {user ? (
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Avatar>
-                  <AvatarImage src="https://github.com/Irtiza751.png" />
-                  <AvatarFallback>{extractUserName(user.name)}</AvatarFallback>
-                </Avatar>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-52" align="end">
-                <DropdownMenuLabel>Account</DropdownMenuLabel>
-                <DropdownMenuSeparator />
-                <DropdownMenuItem>
-                  <Link href="/settings">Settings</Link>
-                </DropdownMenuItem>
-                <DropdownMenuItem onClick={signOut}>Sign out</DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button size="icon" variant="link">
+                    <FiUser size={20} />
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="w-52" align="end">
+                  <DropdownMenuLabel>Account</DropdownMenuLabel>
+                  <DropdownMenuSeparator />
+                  <DropdownMenuItem>Profile</DropdownMenuItem>
+                  <DropdownMenuItem>Settings</DropdownMenuItem>
+                  <DropdownMenuItem onClick={signOut}>
+                    Sign out
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <Button size="icon" variant="link" className="gap-2">
+                <FiShoppingBag size={20} />
+                <span>0</span>
+              </Button>
+            </>
           ) : (
             <Button asChild variant="link">
               <Link href="/sign-in">Sign In</Link>
