@@ -19,10 +19,10 @@ export default function Product({ image, price, title }: IProduct) {
       >
         <Image
           alt="Hoodie"
-          className="aspect-square object-contain"
+          className="aspect-square object-contain h-96"
           src={image}
           width={438}
-          height={438}
+          height={468}
         />
       </Link>
       <figcaption className="block">
