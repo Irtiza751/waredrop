@@ -12,13 +12,7 @@ const config: Config = {
   theme: {
     extend: {
       container: {
-        padding: {
-          default: "1rem",
-          "2xl": "3rem",
-          xl: "3rem",
-          lg: "3rem",
-          sm: "2rem",
-        },
+        // padding: "2rem",
       },
     },
   },
