@@ -2,6 +2,7 @@ import ShopHeader from "@/components/shop-header";
 import ProductList from "./product-list";
 import { waredropApi } from "@/api/waredrop.api";
 import { Product as IProduct } from "@/types/product-interface";
+import Filter from "./filter";
 
 export default async function Shop({
   params,
@@ -15,7 +16,7 @@ export default async function Shop({
       <ShopHeader title={params?.category} />
       <div className="grid grid-cols-8 gap-2 relative items-start">
         <div className="sticky top-5 col-span-2">
-          <h4>Filters</h4>
+          <Filter />
         </div>
         <div className="col-span-6">
           <ProductList data={data} cols={3} />

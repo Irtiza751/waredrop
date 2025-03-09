@@ -1,3 +1,4 @@
+export * from "./components/accordion";
 export * from "./components/avatar";
 export * from "./components/badge";
 export * from "./components/breadcrumb";
@@ -14,3 +15,4 @@ export * from "./components/dropdown-menu";
 export * from "./components/textarea";
 export * from "./components/switch";
 export * from "./components/slider";
+export * from "./components/checkbox";

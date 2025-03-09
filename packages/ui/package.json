@@ -2,7 +2,7 @@
   "name": "@waredrop/ui",
   "version": "1.0.0",
   "description": "Waredrop ui libraray",
-  "main": "index.js",
+  "main": "index.tsx",
   "private": false,
   "sideEffects": [
     "**/*.css"
