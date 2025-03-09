@@ -10,11 +10,15 @@ import { FiCreditCard, FiTruck } from "react-icons/fi";
 export default function Settings() {
   return (
     <form className="grid grid-cols-1 gap-x-6 gap-y-4 sm:grid-cols-6">
-      <div className="sm:col-span-6 space-y-1">
+      <div className="sm:col-span-3 space-y-1">
+        <Label>Email</Label>
+        <Input name="email" />
+      </div>
+      <div className="sm:col-span-3 space-y-1">
         <Label>Username</Label>
         <Input name="username" />
       </div>
-      <div className="flex items-center gap-2">
+      <div className="sm:cols-span-3 flex items-center gap-2">
         <Switch id="seller" />
         <Label htmlFor="seller">Seller mode</Label>
       </div>
@@ -51,7 +55,7 @@ export default function Settings() {
         <Input name="address" />
       </div>
       <Separator className="sm:col-span-6" />
-      <h3 className="sm:col-span-6 text-lg font-semibold">Payment method</h3>
+      <h3 className="sm:col-span-6 text-lg font-semibold">Delivery method</h3>
       <RadioGroup.Root
         className="sm:col-span-4 grid grid-cols-2 gap-2.5"
         defaultValue="cod"
