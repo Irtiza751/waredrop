@@ -12,3 +12,9 @@
   /* slider height */
   height: 4px;
 }
+
+@layer components {
+  .radio:has([data-state="checked"]) {
+    @apply border-black;
+  }
+}
