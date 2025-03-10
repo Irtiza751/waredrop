@@ -21,9 +21,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${font.className} min-h-screen antialiased text-gray-900`}
-      >
+      <body className={`${font.className} min-h-screen antialiased`}>
         <ReactQueryProvider>
           <AuthProvider>
             <UserProvider>{children}</UserProvider>
