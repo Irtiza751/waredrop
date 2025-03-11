@@ -1,7 +1,9 @@
 import ShopHeader from "@/components/shop-header";
 import ProductList from "./product-list";
+import { Card, CardHeader } from "@waredrop/ui";
 import { waredropApi } from "@/api/waredrop.api";
 import { Product as IProduct } from "@/types/product-interface";
+import { notFound } from "next/navigation";
 
 export default async function Shop({
   params,
@@ -10,15 +12,23 @@ export default async function Shop({
 }) {
   const { data } = await waredropApi.get<IProduct[]>("/products");
 
+  if (!data) {
+    return notFound();
+  }
+
   return (
     <>
       <ShopHeader title={params?.category} />
-      <div className="grid grid-cols-8 gap-2 relative items-start">
-        <div className="sticky top-5 col-span-2">
-          <h4>Filters</h4>
+      <div className="grid grid-cols-5 gap-2 relative items-start">
+        <div className="sticky top-5">
+          <Card>
+            <CardHeader>
+              <h4>Filters</h4>
+            </CardHeader>
+          </Card>
         </div>
-        <div className="col-span-6">
-          <ProductList data={data} cols={3} />
+        <div className="col-span-4">
+          <ProductList data={data} />
         </div>
       </div>
     </>
