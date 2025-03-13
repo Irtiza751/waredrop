@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const image = "https://fakeimg.pl/200x200?text=Image&font=bebas";
 
-export default function CreateProduct() {
+export default function Admin() {
   return (
     <div className="container">
       <Image src={image} height={200} width={200} alt="product image" />

@@ -67,11 +67,15 @@ export default function Navbar() {
                     <FiUser size={20} />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent className="w-52" align="end">
+                <DropdownMenuContent align="end">
                   <DropdownMenuLabel>Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-                  <DropdownMenuItem>Profile</DropdownMenuItem>
-                  <DropdownMenuItem>Settings</DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/settings">Profile settings</Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem>
+                    <Link href="/admin">Admin dashboard</Link>
+                  </DropdownMenuItem>
                   <DropdownMenuItem onClick={signOut}>
                     Sign out
                   </DropdownMenuItem>
