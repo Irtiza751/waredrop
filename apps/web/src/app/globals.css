@@ -1,3 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.slider-h {
+  /* slider height */
+  height: 4px;
+}

@@ -5,14 +5,9 @@ import { Button, Separator } from "@waredrop/ui";
 import ProductList from "@/components/product-list";
 import { Product as IProduct } from "@/types/product-interface";
 import { waredropApi } from "@/api/waredrop.api";
-import { notFound } from "next/navigation";
 
 export default async function Detail({ params }: { params: { slug: string } }) {
   const { data } = await waredropApi.get<IProduct[]>("/products");
-
-  if (!data) {
-    return notFound();
-  }
 
   return (
     <>

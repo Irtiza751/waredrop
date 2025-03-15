@@ -14,7 +14,7 @@ export default async function Home() {
     <div>
       <section className="container flex items-center gap-2 mt-12">
         <div className="flex-1">
-          <h2 className="text-5xl font-semibold max-w-2xl leading-normal">
+          <h2 className="max-w-2xl text-6xl font-semibold tracking-tight">
             Seamless shopping for stylish looks that don&apos;t break the bank.
           </h2>
         </div>
