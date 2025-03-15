@@ -19,7 +19,7 @@ export default function AdminLayout({
   return (
     <div className="container grid grid-cols-5 mt-5">
       <AdminSidebar links={links} />
-      <div className="col-span-4">{children}</div>
+      <div className="col-span-4 border-l pl-2">{children}</div>
     </div>
   );
 }
