@@ -23,6 +23,27 @@ export const data: ProductRow[] = [
     date: new Date().toLocaleDateString(),
     stock: "In-Stock",
   },
+  {
+    product: "Large Black T-Shirt",
+    sku: "large-black-t-shirt",
+    price: 200,
+    date: new Date().toLocaleDateString(),
+    stock: "In-Stock",
+  },
+  {
+    product: "Large Black T-Shirt",
+    sku: "large-black-t-shirt",
+    price: 200,
+    date: new Date().toLocaleDateString(),
+    stock: "In-Stock",
+  },
+  {
+    product: "Large Black T-Shirt",
+    sku: "large-black-t-shirt",
+    price: 200,
+    date: new Date().toLocaleDateString(),
+    stock: "In-Stock",
+  },
 ];
 
 // export const columns: ColumnDef<ProductRow>[] = []
