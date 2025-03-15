@@ -1,12 +1,25 @@
+import AdminSidebar from "@/components/admin-sidebar";
+
+const links = [
+  {
+    name: "Overview",
+    href: "/admin",
+  },
+  {
+    name: "Products",
+    href: "/admin/products",
+  },
+];
+
 export default function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <div className="grid grid-cols-8 mt-5">
-      <aside className="col-span-2"></aside>
-      <div className="col-span-6">{children}</div>
+    <div className="container grid grid-cols-5 mt-5">
+      <AdminSidebar links={links} />
+      <div className="col-span-4">{children}</div>
     </div>
   );
 }
