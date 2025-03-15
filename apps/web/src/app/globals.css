@@ -2,7 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  .radio:has([data-state="checked"]) {
+    @apply border-black;
+  }
+}
+
 .slider-h {
   /* slider height */
   height: 4px;
+}
+
+@layer components {
+  .radio:has([data-state="checked"]) {
+    @apply border-black;
+  }
 }
