@@ -8,13 +8,14 @@ import {
   Input,
   Label,
 } from "@waredrop/ui";
+import Link from "next/link";
 
 export default function Add() {
   return (
     <div className="grid grid-cols-5 gap-2 items-start relative">
       <div className="col-span-3 space-y-4">
         <Card className="rounded-lg shadow-none">
-          <CardHeader className="border-b">
+          <CardHeader className="border-b mb-2">
             <CardTitle>Product Information</CardTitle>
           </CardHeader>
           <CardContent>
@@ -38,10 +39,26 @@ export default function Add() {
             </form>
           </CardContent>
         </Card>
-      </div>
-      <div className="col-span-2 sticky top-2">
         <Card className="rounded-lg shadow-none">
-          <CardHeader className="border-b">
+          <CardHeader className="border-b mb-4">
+            <CardTitle>Media</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <input id="images" type="file" hidden multiple />
+            <label
+              htmlFor="images"
+              className="flex items-center justify-center cursor-pointer block h-52 border-2 border-dashed rounded-md"
+            >
+              <Button asChild variant="secondary">
+                <Label htmlFor="images">Upload</Label>
+              </Button>
+            </label>
+          </CardContent>
+        </Card>
+      </div>
+      <div className="col-span-2 space-y-4 sticky top-2">
+        <Card className="rounded-lg shadow-none">
+          <CardHeader className="border-b mb-2">
             <CardTitle>Pricing</CardTitle>
           </CardHeader>
           <CardContent>
@@ -54,8 +71,10 @@ export default function Add() {
           </CardContent>
         </Card>
         <div className="mt-4 flex gap-2 justify-end">
-          <Button variant="outline">Cancel</Button>
-          <Button>Create</Button>
+          <Button asChild size="lg" variant="outline">
+            <Link href="/admin/products">Cancel</Link>
+          </Button>
+          <Button size="lg">Create</Button>
         </div>
       </div>
     </div>
