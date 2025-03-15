@@ -1,3 +1,4 @@
+import Editor from "@/components/editor";
 import {
   Button,
   Card,
@@ -29,6 +30,10 @@ export default function Add() {
               <div className="space-y-2">
                 <Label htmlFor="weight">Weight</Label>
                 <Input id="weight" placeholder="0.0 kg" />
+              </div>
+              <div className="col-span-2 space-y-2">
+                <Label>Description</Label>
+                <Editor />
               </div>
             </form>
           </CardContent>
