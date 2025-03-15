@@ -7,6 +7,8 @@ import {
   CardTitle,
   Input,
   Label,
+  Separator,
+  Switch,
 } from "@waredrop/ui";
 import Link from "next/link";
 
@@ -47,7 +49,7 @@ export default function Add() {
             <input id="images" type="file" hidden multiple />
             <label
               htmlFor="images"
-              className="flex items-center justify-center cursor-pointer block h-52 border-2 border-dashed rounded-md"
+              className="flex items-center justify-center cursor-pointer block min-h-52 border-2 border-dashed rounded-md"
             >
               <Button asChild variant="secondary">
                 <Label htmlFor="images">Upload</Label>
@@ -66,6 +68,13 @@ export default function Add() {
               <div className="col-span-2 space-y-2">
                 <Label htmlFor="price">Price</Label>
                 <Input id="price" placeholder="$0.00" />
+              </div>
+              <Separator className="sm:col-span-2 my-4" />
+              <div className="sm:col-span-2 flex items-centergap-2">
+                <Label htmlFor="available" className="flex-1">
+                  Availability
+                </Label>
+                <Switch id="available" />
               </div>
             </form>
           </CardContent>
