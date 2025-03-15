@@ -7,3 +7,8 @@
     @apply border-black;
   }
 }
+
+.slider-h {
+  /* slider height */
+  height: 4px;
+}
