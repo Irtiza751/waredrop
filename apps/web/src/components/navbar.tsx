@@ -2,9 +2,6 @@
 
 import { FiShoppingBag, FiSearch, FiUser } from "react-icons/fi";
 import {
-  // Avatar,
-  // AvatarFallback,
-  // AvatarImage,
   Button,
   DropdownMenu,
   DropdownMenuContent,
@@ -67,7 +64,7 @@ export default function Navbar() {
                     <FiUser size={20} />
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end">
+                <DropdownMenuContent align="end" className="w-40">
                   <DropdownMenuLabel>Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
                   <DropdownMenuItem>
@@ -76,6 +73,7 @@ export default function Navbar() {
                   <DropdownMenuItem>
                     <Link href="/admin">Admin dashboard</Link>
                   </DropdownMenuItem>
+                  <DropdownMenuSeparator />
                   <DropdownMenuItem onClick={signOut}>
                     Sign out
                   </DropdownMenuItem>
