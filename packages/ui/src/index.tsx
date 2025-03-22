@@ -16,3 +16,5 @@ export * from "./components/textarea";
 export * from "./components/switch";
 export * from "./components/slider";
 export * from "./components/checkbox";
+export * from "./components/toggle";
+export * from "./components/toggle-group";
