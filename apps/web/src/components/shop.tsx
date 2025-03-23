@@ -19,7 +19,7 @@ export default async function Shop({
           <Filter />
         </div>
         <div className="col-span-6">
-          <ProductList data={data} cols={3} />
+          <ProductList data={data} className="lg:grid-cols-3" />
         </div>
       </div>
     </>
