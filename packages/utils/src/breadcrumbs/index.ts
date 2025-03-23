@@ -1,4 +1,4 @@
-export default function breadcrumbs(path: string) {
+export function breadcrumbs(path: string) {
   const chunks = path.split("/"); // path chunks array
 
   return chunks.map((chunk, i) => {
