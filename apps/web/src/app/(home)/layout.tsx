@@ -2,7 +2,7 @@ import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 import { Separator } from "@waredrop/ui";
 import Link from "next/link";
-import { getSeason } from "@waredrop/utils";
+// import { getSeason } from "@waredrop/utils";
 import { routes } from "@/constants/routes";
 import Navbar from "@/components/navbar";
 

@@ -1,6 +1,6 @@
 import { type Editor } from "@tiptap/react";
 import { Toggle } from "@waredrop/ui";
-import { LuBold, LuItalic, LuHeading3, LuList } from "react-icons/lu";
+import { LuBold, LuItalic, LuHeading, LuList } from "react-icons/lu";
 
 export default function EditorToolbar({ editor }: { editor: Editor }) {
   return (
@@ -12,7 +12,7 @@ export default function EditorToolbar({ editor }: { editor: Editor }) {
           editor.chain().focus().toggleHeading({ level: 1 }).run()
         }
       >
-        <LuHeading3 size={16} />
+        <LuHeading size={16} />
       </Toggle>
       <Toggle
         size="sm"
