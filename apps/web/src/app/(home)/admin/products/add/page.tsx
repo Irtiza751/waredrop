@@ -15,7 +15,7 @@ import Link from "next/link";
 export default function Add() {
   return (
     <div className="grid grid-cols-5 gap-2 items-start relative">
-      <div className="col-span-3 space-y-4">
+      <div className="md:col-span-3 col-span-5 space-y-4">
         <Card className="rounded-lg shadow-none">
           <CardHeader className="border-b mb-2">
             <CardTitle>Product Information</CardTitle>
@@ -34,7 +34,7 @@ export default function Add() {
                 <Label htmlFor="weight">Weight</Label>
                 <Input id="weight" placeholder="0.0 kg" />
               </div>
-              <div className="col-span-2 space-y-2">
+              <div className="typograph col-span-2 space-y-2">
                 <Label>Description</Label>
                 <Editor />
               </div>
@@ -58,7 +58,7 @@ export default function Add() {
           </CardContent>
         </Card>
       </div>
-      <div className="col-span-2 space-y-4 sticky top-2">
+      <div className="md:col-span-2 col-span-5 space-y-4 sticky top-2">
         <Card className="rounded-lg shadow-none">
           <CardHeader className="border-b mb-2">
             <CardTitle>Pricing</CardTitle>
@@ -69,8 +69,8 @@ export default function Add() {
                 <Label htmlFor="price">Price</Label>
                 <Input id="price" placeholder="$0.00" />
               </div>
-              <Separator className="sm:col-span-2 my-4" />
-              <div className="sm:col-span-2 flex items-centergap-2">
+              <Separator className="col-span-2 my-4" />
+              <div className="col-span-2 flex items-center gap-2">
                 <Label htmlFor="available" className="flex-1">
                   Availability
                 </Label>

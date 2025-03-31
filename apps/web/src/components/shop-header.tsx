@@ -1,7 +1,9 @@
 "use client";
 import { usePathname } from "next/navigation";
-import breadcrumbs from "@/utils/breadcrumbs";
+import { breadcrumbs } from "@waredrop/utils";
 import Link from "next/link";
+import React from "react";
+import { utils } from "@waredrop/ui/core";
 
 export default function ShopHeader({ title }: { title?: string }) {
   const path = usePathname();
@@ -12,17 +14,21 @@ export default function ShopHeader({ title }: { title?: string }) {
         <h2 className="text-5xl max-w-4xl font-semibold text-center leading-normal text-black uppercase">
           {title?.replace("-", " ") || "Shop Page"}
         </h2>
-        <ul className="capitalize flex gap-1">
+        <ul className="capitalize flex gap-2">
           {breadcrumbs(path).map((crumb) => (
-            <>
+            <React.Fragment key={crumb.name}>
               <li
-                key={crumb.name}
-                className="flex gap-1 hover:underline hover:text-blue-700"
+                className={utils.cn(
+                  "flex gap-1 text-stone-500 hover:text-stone-800",
+                  {
+                    "text-stone-800": crumb.last,
+                  }
+                )}
               >
-                <Link href="/">{crumb.name}</Link>
+                <Link href={crumb.href}>{crumb.name}</Link>
               </li>
-              {!crumb.last ? <span>/</span> : null}
-            </>
+              {!crumb.last ? <span className="text-stone-400">/</span> : null}
+            </React.Fragment>
           ))}
         </ul>
       </div>
